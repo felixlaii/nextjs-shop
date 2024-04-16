@@ -163,5 +163,7 @@ export const Header: React.FC<HeaderProps> = ({
   logoClassName,
   alt,
 }) => {
+  const [isClick, setIsClick] = useState<boolean>(false);
+
   return <div></div>;
 };
