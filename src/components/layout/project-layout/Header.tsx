@@ -25,6 +25,30 @@ export function useOnClickOutside<T extends HTMLDivElement>(
   }, [ref, handler]);
 }
 
+const LogoLink: React.FC<
+  Pick<HeaderProps, "onLinkClick" | "logo" | "alt"> & {
+    logoClassName?: string;
+    showSidePanel?: boolean;
+  }
+> = ({ onLinkClick, logoClassName }) => {
+  return (
+    <div>
+      <Link
+        href="/"
+        className={clsx(
+          "flex lg:inline-block w-full relative",
+          "focus:outline-none focus-visible:ring focus-visible:ring-black/20 focus-visible:border-transparent",
+
+          logoClassName
+        )}
+        onClick={onLinkClick}
+      >
+        {/* <Logo /> */}
+      </Link>
+    </div>
+  );
+};
+
 export const Header: React.FC = () => {
   return <div></div>;
 };
