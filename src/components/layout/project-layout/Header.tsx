@@ -150,6 +150,18 @@ const DesktopNavBar: React.FC<
   );
 };
 
-export const Header: React.FC = () => {
+export const Header: React.FC<HeaderProps> = ({
+  navigationLinks,
+  companyName,
+  companyNameClassName,
+  linkClassName,
+  hoverClassName,
+  activeLinkClassName,
+  currentActiveLocation,
+  textClassName,
+  logo,
+  logoClassName,
+  alt,
+}) => {
   return <div></div>;
 };
