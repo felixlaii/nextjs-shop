@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import { HeaderProps } from "@/types/component-types";
 import Link from "next/link";
 import clsx from "clsx";
+import { Popover, Transition } from "@headlessui/react";
+
 
 export function useOnClickOutside<T extends HTMLDivElement>(
   ref: React.RefObject<T>,
@@ -170,5 +172,73 @@ export const Header: React.FC<HeaderProps> = ({
     setIsClick(false);
   });
 
-  return <div></div>;
+  return (
+    <div>
+      <header className="flex justify-between w-full items-center transition-all duration-100">
+        <div className="flex items-center">
+          <div className="m-1">
+            {logo ? (
+              <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} />
+            ) : (
+              <Link href="/">
+                <div className={clsx(companyNameClassName, "")}>
+                  {companyName}
+                </div>
+              </Link>
+            )}
+          </div>
+        </div>
+        iv className="flex items-center ">
+          <Popover className=" lg:hidden">
+            {({ open, close }) => (
+              <>
+                <Popover.Button
+                  className={clsx(
+                    "flex px-6 mt-2",
+                    "focus:outline-none focus:ring-1 focus-ring-inset focus:ring-black-100"
+                  )}
+                >
+                  <HamburgerIcon />
+                </Popover.Button>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-200"
+                  enterFrom="opacity-0 translate-y-1"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 translate-y-1"
+                >
+                  <Popover.Panel className="absolute left-1/2 z-50 mt-4 tracking-widest w-full -translate-x-1/2 transform px-0 sm:px-0 lg:max-w-3xl bg-zinc-200 border-y-[2px] shadow-xl">
+                    {({ close }) => (
+                      <div>
+                        <MenuLinks
+                          navigationLinks={navigationLinks}
+                          linkClassName={linkClassName}
+                          hoverClassName={hoverClassName}
+                          activeLinkClassName={activeLinkClassName}
+                          currentActiveLocation={currentActiveLocation}
+                          onLinkClick={() => close()}
+                        />
+                      </div>
+                    )}
+                  </Popover.Panel>
+                </Transition>
+              </>
+            )}
+          </Popover>
+        </div>
+        <div className="hidden lg:inline-flex mt-3 justify-center">
+          <DesktopNavBar
+            navigationLinks={navigationLinks}
+            textClassName={textClassName}
+            linkClassName={linkClassName}
+            hoverClassName={hoverClassName}
+            activeLinkClassName={activeLinkClassName}
+            currentActiveLocation={currentActiveLocation}
+          />
+        </div>
+      </header>
+    </div>
+  );
 };
