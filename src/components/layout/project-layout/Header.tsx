@@ -3,7 +3,7 @@ import { HeaderProps } from "@/types/component-types";
 import Link from "next/link";
 import clsx from "clsx";
 import { Popover, Transition } from "@headlessui/react";
-
+import HamburgerIcon from "@/components/ui/icons/HamburgerIcon";
 
 export function useOnClickOutside<T extends HTMLDivElement>(
   ref: React.RefObject<T>,
@@ -188,7 +188,7 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
         </div>
-        iv className="flex items-center ">
+        <div className="flex items-center ">
           <Popover className=" lg:hidden">
             {({ open, close }) => (
               <>
