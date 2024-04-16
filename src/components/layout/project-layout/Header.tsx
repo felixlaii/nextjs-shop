@@ -165,5 +165,10 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isClick, setIsClick] = useState<boolean>(false);
 
+  const ref = useRef(null);
+  useOnClickOutside(ref, () => {
+    setIsClick(false);
+  });
+
   return <div></div>;
 };
