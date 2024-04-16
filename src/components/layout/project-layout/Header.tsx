@@ -96,6 +96,60 @@ const MenuLinks: React.FC<
   );
 };
 
+const DesktopNavBar: React.FC<
+  Pick<
+    HeaderProps,
+    | "onLinkClick"
+    | "navigationLinks"
+    | "linkClassName"
+    | "hoverClassName"
+    | "activeLinkClassName"
+    | "currentActiveLocation"
+    | "textClassName"
+  >
+> = ({
+  navigationLinks,
+  currentActiveLocation,
+  activeLinkClassName,
+  textClassName,
+  hoverClassName,
+  linkClassName,
+}) => {
+  const [isHover, setIsHover] = useState<boolean>(false);
+  const [isClick, setIsClick] = useState<boolean>(false);
+  const ref = useRef(null);
+  useOnClickOutside(ref, () => {
+    setIsClick(false);
+  });
+  return (
+    <ul className="flex">
+      {navigationLinks.map((link, i) => {
+        return (
+          <li key={link.name}>
+            <Link
+              href={link.href}
+              className={clsx(
+                currentActiveLocation?.includes(link.href)
+                  ? activeLinkClassName
+                  : linkClassName,
+                textClassName,
+                "text-center lg:text-left",
+                "flex flex-col"
+              )}
+              onClick={() => setIsClick(true)}
+              onMouseLeave={() => {
+                setIsHover(false);
+              }}
+            >
+              <span className={clsx(hoverClassName)}>{link.name}</span>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
 export const Header: React.FC = () => {
   return <div></div>;
 };
