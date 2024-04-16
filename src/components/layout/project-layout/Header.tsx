@@ -49,6 +49,53 @@ const LogoLink: React.FC<
   );
 };
 
+const MenuLinks: React.FC<
+  Pick<
+    HeaderProps,
+    | "navigationLinks"
+    | "currentActiveLocation"
+    | "activeLinkClassName"
+    | "linkClassName"
+    | "hoverClassName"
+    | "onLinkClick"
+    | "textClassName"
+  > & { onLinkClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void }
+> = ({
+  navigationLinks,
+  currentActiveLocation,
+  activeLinkClassName,
+  textClassName,
+  hoverClassName,
+  linkClassName,
+  onLinkClick,
+}) => {
+  return (
+    <div>
+      <ul>
+        {navigationLinks.map((link) => (
+          <li key={link.name}>
+            <Link
+              href={link.href}
+              className={clsx(
+                currentActiveLocation?.includes(link.href)
+                  ? activeLinkClassName
+                  : linkClassName,
+                hoverClassName,
+                textClassName,
+                "text-center lg:text-left border-b-[1px] font-light py-[0.75rem]",
+                "flex flex-col"
+              )}
+              onClick={onLinkClick}
+            >
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 export const Header: React.FC = () => {
   return <div></div>;
 };
