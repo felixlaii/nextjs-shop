@@ -1,6 +1,6 @@
 import react from "react";
 import Image from "next/image";
-import MacaronLogo from "../../../../public/images/macaron-logo.svg";
+import MacaronLogo from "../../../../public/images/macaron-logo-double.svg";
 
 const Logo = () => {
   return (
