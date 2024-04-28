@@ -5,7 +5,7 @@ import MacaronLogo from "../../../../public/images/macaron-logo.svg";
 const Logo = () => {
   return (
     <div>
-      <Image src={MacaronLogo} width={100} height={100} alt="header logo" />
+      <Image src={MacaronLogo} width={200} height={200} alt="header logo" />
     </div>
   );
 };
