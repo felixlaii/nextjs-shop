@@ -173,9 +173,9 @@ export const Header: React.FC<HeaderProps> = ({
   });
 
   return (
-    <div>
-      <header className="flex justify-between w-full items-center transition-all duration-100">
-        <div className="flex items-center">
+    <div className="w-full flex flex-column items-center justify-center">
+      <header className="items-center transition-all duration-100">
+        <div className="flex justify-center items-center">
           <div className="m-1">
             {logo ? (
               <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} />
