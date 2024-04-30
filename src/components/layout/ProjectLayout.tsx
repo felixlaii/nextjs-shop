@@ -17,8 +17,8 @@ export const ProjectLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const navigationLinks: Array<NavigationLink> = [
     { name: "home", href: "/" },
     { name: "gallery", href: "/photo-gallery" },
-    { name: "menu options", href: "/flavours-pricing" },
-    { name: "contact", href: "/contact-me" },
+    { name: "menu options", href: "/menu-options" },
+    { name: "contact", href: "/contact" },
   ];
 
   return (
