@@ -4,7 +4,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { Popover, Transition } from "@headlessui/react";
 import HamburgerIcon from "@/components/ui/icons/HamburgerIcon";
-
+import Logo from "@/components/ui/icons/Logo";
 export function useOnClickOutside<T extends HTMLDivElement>(
   ref: React.RefObject<T>,
   handler: (e: any) => void
@@ -45,7 +45,7 @@ const LogoLink: React.FC<
         )}
         onClick={onLinkClick}
       >
-        {/* <Logo /> */}
+        <Logo />
       </Link>
     </div>
   );
