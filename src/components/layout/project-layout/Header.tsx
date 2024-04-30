@@ -188,13 +188,13 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
         </div>
-        <div className="flex items-center ">
+        <div className="flex items-center justify-center ">
           <Popover className=" lg:hidden">
             {({ open, close }) => (
               <>
                 <Popover.Button
                   className={clsx(
-                    "flex px-6 mt-2",
+                    "flex justify-center items-center px-6 mt-2",
                     "focus:outline-none focus:ring-1 focus-ring-inset focus:ring-black-100"
                   )}
                 >
