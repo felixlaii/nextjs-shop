@@ -16,9 +16,9 @@ export const ProjectLayout: React.FC<PropsWithChildren> = ({ children }) => {
 
   const navigationLinks: Array<NavigationLink> = [
     { name: "home", href: "/" },
-    { name: "photo gallery", href: "/photo-gallery" },
-    { name: "flavours and pricing", href: "/flavours-pricing" },
-    { name: "contact me", href: "/contact-me" },
+    { name: "gallery", href: "/photo-gallery" },
+    { name: "menu", href: "/menu-options" },
+    { name: "contact", href: "/contact" },
   ];
 
   return (
@@ -29,7 +29,7 @@ export const ProjectLayout: React.FC<PropsWithChildren> = ({ children }) => {
         currentActiveLocation={location.pathname}
         textClassName="group text-md transition-all duration-100 ease-in-out font-light mx-8 text-brand-lightish dark:text-brand-base"
         linkClassName="flex bg-left-bottom lg:text-md"
-        logoClassName="w-full sm:w-3/5 md:w-3/4 ml-2 mt-2 mr-1"
+        logoClassName="w-full mt-2"
         hoverClassName={clsx(
           "flex bg-left-bottom hover:text-brand-base bg-gradient-to-r from-brand-darkest/40 to-brand-darkest bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
         )}

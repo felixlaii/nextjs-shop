@@ -173,9 +173,9 @@ export const Header: React.FC<HeaderProps> = ({
   });
 
   return (
-    <div>
-      <header className="flex justify-between w-full items-center transition-all duration-100">
-        <div className="flex items-center">
+    <div className="w-full flex flex-column items-center justify-center">
+      <header className="items-center transition-all duration-100">
+        <div className="flex justify-center items-center">
           <div className="m-1">
             {logo ? (
               <LogoLink logo={logo} alt={alt} logoClassName={logoClassName} />
@@ -188,13 +188,13 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
         </div>
-        <div className="flex items-center ">
+        <div className="flex items-center justify-center ">
           <Popover className=" lg:hidden">
             {({ open, close }) => (
               <>
                 <Popover.Button
                   className={clsx(
-                    "flex px-6 mt-2",
+                    "flex justify-center items-center px-6 mt-2",
                     "focus:outline-none focus:ring-1 focus-ring-inset focus:ring-black-100"
                   )}
                 >
