@@ -1,6 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const Contact: React.FC = () => {
-  return <div></div>;
+  return (
+    <section>
+      <form
+        name="contact"
+        action="/success"
+        method="POST"
+        data-netlify="true"
+      ></form>
+    </section>
+  );
 };
 export default Contact;
