@@ -6,6 +6,8 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  presets: [require("./tailwind.preset")],
+
   theme: {
     extend: {
       backgroundImage: {
