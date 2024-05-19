@@ -14,14 +14,14 @@ const Contact: React.FC = () => {
       {" "}
       <div>
         <form
-          name="fileForm"
-          encType="multipart/form-data"
+          name="contact"
+          //   encType="multipart/form-data"
           action="/success"
           method="POST"
           data-netlify="true"
           className="flex flex-col"
         >
-          <input type="hidden" name="fileForm" value="fileForm" />
+          <input type="hidden" name="form-name" value="contact" />
           <div className="flex flex-col mb-4">
             <label className="">Name</label>
             <input
@@ -72,12 +72,12 @@ const Contact: React.FC = () => {
               required
             ></textarea>
           </div>
-          <div className="flex mb-4">
+          {/* <div className="flex mb-4">
             <div className="flex flex-col mb-4">
               <label>Inspo</label>
               <input type="file" name="file" id="file" />
             </div>
-          </div>
+          </div> */}
 
           <button type="submit">Submit</button>
         </form>
