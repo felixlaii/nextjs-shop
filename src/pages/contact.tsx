@@ -21,7 +21,7 @@ const Contact: React.FC = () => {
           data-netlify="true"
           className="flex flex-col"
         >
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="fileForm" value="fileForm" />
           <div className="flex flex-col mb-4">
             <label className="">Name</label>
             <input
