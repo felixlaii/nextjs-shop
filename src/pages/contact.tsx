@@ -14,7 +14,8 @@ const Contact: React.FC = () => {
       {" "}
       <div>
         <form
-          name="contact"
+          name="fileForm"
+          encType="multipart/form-data"
           action="/success"
           method="POST"
           data-netlify="true"
@@ -74,7 +75,7 @@ const Contact: React.FC = () => {
           <div className="flex mb-4">
             <div className="flex flex-col mb-4">
               <label>Inspo</label>
-              <input type="file" name="file" id="file" required />
+              <input type="file" name="file" id="file" />
             </div>
           </div>
 
