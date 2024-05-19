@@ -2,15 +2,8 @@ import React from "react";
 
 const Contact: React.FC = () => {
   return (
-    <section>
-      <form
-        className="flex flex-column"
-        name="contact"
-        action="/success"
-        method="POST"
-        data-netlify="true"
-        encType="multipart/form-data"
-      >
+    <section className="flex flex-column">
+      <form name="contact" action="/success" method="POST" data-netlify="true">
         <div>
           <h2>Lets Talk ...</h2>
         </div>
