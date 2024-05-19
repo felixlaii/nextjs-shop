@@ -3,7 +3,14 @@ import React from "react";
 const Contact: React.FC = () => {
   return (
     <section>
-      <form name="contact" action="/success" method="POST" data-netlify="true">
+      <form
+        className="flex flex-column"
+        name="contact"
+        action="/success"
+        method="POST"
+        data-netlify="true"
+        encType="multipart/form-data"
+      >
         <div>
           <h2>Lets Talk ...</h2>
         </div>
@@ -18,12 +25,17 @@ const Contact: React.FC = () => {
           required
         />
         <label>Phone:</label>
-        <input placeholder="phone number" type="phone" name="phone" required />
+        <input placeholder="phone number" type="tel" name="phone" required />
         <label>Requested Pick Up Date & Time:</label>
-        <input placeholder="date & time" type="pickup" name="pickup" required />
+        <input
+          placeholder="date & time"
+          type="datetime-local"
+          name="pickup"
+          required
+        />
         <label>Message:</label>
         <textarea
-          placeholder="please include as much details as possible (theme/occasion, quantity, flavours and colours etc)"
+          placeholder="please include as many details as possible (theme/occasion, quantity, flavours and colours etc)"
           name="message"
           required
         ></textarea>
@@ -35,4 +47,5 @@ const Contact: React.FC = () => {
     </section>
   );
 };
+
 export default Contact;

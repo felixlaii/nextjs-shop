@@ -14,38 +14,64 @@ const handler: Handler = async (
       };
     }
 
-    const formData = new FormData();
-    const { name, email } = JSON.parse(event.body);
+    if (!event.body) {
+      return {
+        statusCode: 400,
+        body: "Bad Request: No body in request",
+      };
+    }
 
+    const formData = new FormData();
+    const parsedBody = JSON.parse(event.body);
+
+    const name: string | null = parsedBody.name;
+    const email: string | null = parsedBody.email;
     const files = event.isBase64Encoded
       ? JSON.parse(Buffer.from(event.body, "base64").toString("utf8")).files
-      : undefined;
+      : parsedBody.files;
+
+    if (!name || !email) {
+      return {
+        statusCode: 400,
+        body: "Bad Request: Name and email are required",
+      };
+    }
 
     if (files && files.file) {
-      const fileBuffer = Buffer.from(files.file.content, "base64");
-      formData.append("file", fileBuffer, files.file.filename);
+      const fileContent = files.file.content;
+      const fileName = files.file.filename;
+      if (typeof fileContent === "string" && typeof fileName === "string") {
+        const fileBuffer = Buffer.from(fileContent, "base64");
+        formData.append("file", fileBuffer, fileName);
+      } else {
+        return {
+          statusCode: 400,
+          body: "Bad Request: Invalid file format",
+        };
+      }
     }
 
     formData.append("name", name);
     formData.append("email", email);
-
-    // Optionally, send the form data to a third-party service or process it here
-    // Example of sending the form data to an external service
-    // const response = await fetch('https://example.com/endpoint', {
-    //   method: 'POST',
-    //   body: formData,
-    // });
 
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "Form submitted successfully!" }),
     };
   } catch (error) {
+    let errorMessage = "Unknown error";
+
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    } else if (typeof error === "string") {
+      errorMessage = error;
+    }
+
     return {
       statusCode: 500,
       body: JSON.stringify({
         message: "Internal Server Error",
-        error: error.message,
+        error: errorMessage,
       }),
     };
   }
