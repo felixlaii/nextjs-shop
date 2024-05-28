@@ -14,14 +14,14 @@ const Contact: React.FC = () => {
       {" "}
       <div>
         <form
-          name="contactme"
+          name="contact"
           //   encType="multipart/form-data"
           action="/success"
           method="POST"
           data-netlify="true"
           className="flex flex-col"
         >
-          <input type="hidden" name="form-name" value="contactme" />
+          <input type="hidden" name="form-name" value="contact" />
           <div className="flex flex-col mb-4">
             <label className="">Name</label>
             <input
