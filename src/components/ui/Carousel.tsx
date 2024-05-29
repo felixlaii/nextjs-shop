@@ -23,7 +23,11 @@ const Carousel = () => {
             left: -currentImage * carouselSize.width,
           }}
           className="absolute flex h-full w-full transition-all duration-300"
-        ></div>
+        >
+          {SliderData.map((v, i) => (
+            <div key={i} className="relative h-full w-full shrink-0"></div>
+          ))}
+        </div>
       </div>
     </div>
   );
