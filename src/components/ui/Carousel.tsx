@@ -14,7 +14,19 @@ const Carousel = () => {
       setCarouselSize({ width, height });
     }
   }, []);
-  return <div></div>;
+  return (
+    <div>
+      <div className="relative h-60 w-80 overflow-hidden rounded-md">
+        <div
+          ref={carouselRef}
+          style={{
+            left: -currentImage * carouselSize.width,
+          }}
+          className="absolute flex h-full w-full transition-all duration-300"
+        ></div>
+      </div>
+    </div>
+  );
 };
 
 export default Carousel;
