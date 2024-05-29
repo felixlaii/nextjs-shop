@@ -19,3 +19,9 @@ export interface HeaderProps {
   alt?: string;
   onLinkClick?: () => void;
 }
+
+export interface CarouselProps {
+  width?: number;
+  height?: number;
+  items: React.ReactNode[];
+}
