@@ -34,27 +34,15 @@ const Carousel = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentImage(
-      currentImage === SliderData.length - 1 ? 0 : currentImage + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentImage(
-      currentImage === 0 ? SliderData.length - 1 : currentImage - 1
-    );
-  };
-
   return (
     <div className="flex justify-center min-h-screen w-full bg-gray-20">
-      <div className="relative h-[45rem] w-[40rem] overflow-hidden rounded-md">
+      <div className="relative h-[45rem] w-[60rem] overflow-hidden rounded-md">
         <div
           ref={carouselRef}
           style={{
             transform: `translateX(-${currentImage * carouselSize.width}px)`,
           }}
-          className="absolute flex h-full w-full transition-transform duration-500"
+          className="absolute flex h-full w-full transition-transform duration-1000"
         >
           {SliderData.map((image, i) => (
             <div key={i} className="relative h-full w-full shrink-0">
