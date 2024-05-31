@@ -10,7 +10,7 @@ const GalleryCarousel = () => {
       className="relative w-full"
       data-carousel="slide"
     >
-      <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+      <div className="relative h-76 overflow-hidden rounded-lg md:h-96">
         {PhotoGallery.map((photo, index) => (
           <div
             key={index}
@@ -20,10 +20,11 @@ const GalleryCarousel = () => {
             data-carousel-item
           >
             <Image
-              src={photo.image}
+              src={photo.photo}
               alt={`Slide ${index + 1}`}
-              layout="fill"
-              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              width={300} // Set appropriate width
+              height={300} // Set appropriate height
+              className="block w-full h-full object-cover"
             />
           </div>
         ))}

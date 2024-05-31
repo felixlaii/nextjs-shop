@@ -1,17 +1,22 @@
-export const PhotoGallery: { image: string }[] = [
+export const PhotoGallery: { photo: string }[] = [
   {
-    image:
-      "https://res.cloudinary.com/dyjj9jfc2/image/upload/v1716941016/macaron-hero_mvepkb.heic",
+    photo:
+      "https://res.cloudinary.com/dyjj9jfc2/image/upload/v1716943404/macaron-boxes-hero_vjex2r.jpg",
   },
   {
-    image:
-      "https://res.cloudinary.com/dyjj9jfc2/image/upload/v1716943404/macaron-boxes-hero_vjex2r.heic",
+    photo:
+      "https://res.cloudinary.com/dyjj9jfc2/image/upload/v1716943404/macaron-boxes-hero_vjex2r.jpg",
   },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
+  {
+    photo:
+      "https://res.cloudinary.com/dyjj9jfc2/image/upload/v1716943404/macaron-boxes-hero_vjex2r.jpg",
+  },
+  {
+    photo:
+      "https://res.cloudinary.com/dyjj9jfc2/image/upload/v1716943404/macaron-boxes-hero_vjex2r.jpg",
+  },
+  {
+    photo:
+      "https://res.cloudinary.com/dyjj9jfc2/image/upload/v1716943404/macaron-boxes-hero_vjex2r.jpg",
+  },
 ];
