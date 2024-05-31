@@ -1,10 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   AiOutlineMail,
   AiOutlinePhone,
   AiOutlineInstagram,
 } from "react-icons/ai";
 import { STORE_DETAILS } from "../../../../public/data/store-info";
+
 const LogoFooter = () => {
   return (
     <div>
@@ -25,9 +27,11 @@ const FooterCTA = () => {
   return (
     <div>
       <div className="flex flex-row justify-center">
-        <button className="bg-transparent text-pink-300 font-light text-sm hover:text-pink-400 mt-2 py-1 px-3 border-double border-4 border-pink-200 hover:border-pink-400 rounded">
-          contact us
-        </button>
+        <Link href="/contact">
+          <button className="bg-transparent text-pink-300 font-light text-sm hover:text-pink-400 mt-2 py-1 px-3 border-double border-4 border-pink-200 hover:border-pink-400 rounded">
+            contact us
+          </button>
+        </Link>
       </div>
     </div>
   );
