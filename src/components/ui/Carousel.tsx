@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import { SliderData } from "../../../public/data/carousel-images"; // Adjust the path as needed
+import { SliderData } from "../../../public/data/carousel-images";
 
-const Carousel = () => {
+const HomeCarousel = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [carouselSize, setCarouselSize] = useState({ width: 0, height: 0 });
   const carouselRef = useRef(null);
@@ -16,8 +16,8 @@ const Carousel = () => {
       }
     };
 
-    handleResize(); // Set initial size
-    window.addEventListener("resize", handleResize); // Update size on window resize
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -61,4 +61,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default HomeCarousel;
