@@ -19,7 +19,7 @@ const LogoFooter = () => {
 
 const FooterSocials = () => {
   return (
-    <div>
+    <div className="flex flex-row">
       <div className="mx-5 mb-2">
         <a
           href="https://www.instagram.com/fl_macarons?igsh=ZjJkbGh0bmEwdzVl&utm_source=qr"
@@ -51,7 +51,18 @@ const FooterSocials = () => {
 };
 
 const Footer: React.FC = () => {
-  return <div className="w-screen"></div>;
+  return (
+    <footer className="w-screen">
+      <div className="flex flex-col items-center justify-center">
+        <div>
+          <LogoFooter />
+        </div>
+        <div>
+          <FooterSocials />
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
