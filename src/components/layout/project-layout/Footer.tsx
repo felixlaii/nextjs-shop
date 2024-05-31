@@ -13,8 +13,8 @@ const LogoFooter = () => {
       <div className="relative">
         <Image
           className=""
-          width={100}
-          height={40}
+          width={150}
+          height={50}
           src="/images/macaron-logo.png"
           alt="logo"
         />
@@ -41,28 +41,28 @@ const StoreContact = () => {
   return (
     <div>
       <div className="pb-1">
-        <div className=" flex flex-row justify-center mt-2 mb-1">
-          <AiOutlinePhone className="mr-2 w-4 h-4 text-black" />
+        <div className="flex flex-row items-center justify-center mt-2 mb-1">
+          <AiOutlinePhone className="mr-2 w-5 h-5 text-pink-300" />
           <a
-            className="hover:underline font-primary text-[.8em] text-zinc-300 tracking-widest"
+            className="hover:underline text-[.8em] text-pink-400 tracking-widest"
             href={`tel:${STORE_DETAILS.phone}`}
           >
             {STORE_DETAILS.phone}
           </a>
         </div>
-        <div className=" flex flex-row justify-center mt-2 mb-1">
-          <AiOutlineMail className="mr-2 w-4 h-4 text-black" />
+        <div className="flex flex-row items-center justify-center mt-2 mb-1">
+          <AiOutlineMail className="mr-2 w-5 h-5 text-pink-300" />
           <a
-            className="font-primary text-[.8em] hover:underline tracking-[.3em] text-zinc-300"
+            className="text-[.8em] hover:underline tracking-[.3em] text-pink-400"
             href={`mailto:${STORE_DETAILS.email}`}
           >
             {STORE_DETAILS.email}
           </a>
         </div>
-        <div className=" flex flex-row justify-center mt-2 mb-1">
-          <AiOutlineInstagram className="mr-2 w-4 h-4 " />
+        <div className=" flex flex-row items-center justify-center mt-2 mb-1">
+          <AiOutlineInstagram className="mr-2 w-5 h-5 text-pink-300 " />
           <a
-            className="font-primary text-[.8em] hover:underline tracking-[.3em] text-zinc-300"
+            className="text-[.8em] hover:underline tracking-[.3em] text-pink-400"
             href="https://www.instagram.com/fl_macarons?igsh=ZjJkbGh0bmEwdzVl&utm_source=qr"
             target="_blank"
           >
