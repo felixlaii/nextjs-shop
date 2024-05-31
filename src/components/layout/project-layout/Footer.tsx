@@ -18,7 +18,36 @@ const LogoFooter = () => {
 };
 
 const FooterSocials = () => {
-  return <div></div>;
+  return (
+    <div>
+      <div className="mx-5 mb-2">
+        <a
+          href="https://www.instagram.com/fl_macarons?igsh=ZjJkbGh0bmEwdzVl&utm_source=qr"
+          target="_blank"
+        >
+          {" "}
+          <Image
+            width={35}
+            height={35}
+            src="/images/Instagram_Glyph_Gradient.png"
+            alt="socials"
+          />
+        </a>
+      </div>
+      <div className="mx-5 mb-2">
+        <a href="mailto:fl.macarons@hotmail.com" target="_blank">
+          {" "}
+          <AiOutlineMail />
+        </a>
+      </div>
+      <div className="mx-5 mb-2">
+        <a href="tel:+16472866922">
+          {" "}
+          <AiOutlinePhone />
+        </a>
+      </div>
+    </div>
+  );
 };
 
 const Footer: React.FC = () => {
