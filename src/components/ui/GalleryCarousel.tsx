@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import "flowbite";
-import { PhotoGallery } from "../../../public/data/photo-gallery"; // Adjust the path as needed
+import { PhotoGallery } from "../../../public/data/photo-gallery";
 
 const GalleryCarousel = () => {
   return (
-    <div
-      id="default-carousel"
-      className="relative w-full"
-      data-carousel="slide"
-    >
+    <div id="default-carousel" className="relative w-3/4" data-carousel="slide">
       <div className="relative h-76 overflow-hidden rounded-lg md:h-96">
         {PhotoGallery.map((photo, index) => (
           <div
