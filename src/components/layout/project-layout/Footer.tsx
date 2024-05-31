@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
-
+import { STORE_DETAILS } from "../../../../public/data/store-info";
 const LogoFooter = () => {
   return (
     <div>
       <div className="relative">
         <Image
-          className="w-[8.3rem] h-[2.7rem] md:w-[8rem] md:h-[2.5rem] lg:w-[11.5rem] lg:h-[2.5rem] pt-4 pb-2"
+          className=""
           width={100}
           height={40}
           src="/images/macaron-logo.png"
@@ -27,7 +27,7 @@ const FooterSocials = () => {
         >
           {" "}
           <Image
-            width={35}
+            width={20}
             height={35}
             src="/images/Instagram_Glyph_Gradient.png"
             alt="socials"
@@ -37,13 +37,13 @@ const FooterSocials = () => {
       <div className="mx-5 mb-2">
         <a href="mailto:fl.macarons@hotmail.com" target="_blank">
           {" "}
-          <AiOutlineMail />
+          <AiOutlineMail className="w-5 h-5" />
         </a>
       </div>
       <div className="mx-5 mb-2">
         <a href="tel:+16472866922">
           {" "}
-          <AiOutlinePhone />
+          <AiOutlinePhone className="w-5 h-5" />
         </a>
       </div>
     </div>
