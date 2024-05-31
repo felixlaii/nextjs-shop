@@ -5,13 +5,13 @@ import { PhotoGallery } from "../../../public/data/photo-gallery";
 
 const GalleryCarousel = () => {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center h-screen mt-10">
       <div
         id="default-carousel"
         className="relative w-3/4"
         data-carousel="slide"
       >
-        <div className="relative h-76 overflow-hidden rounded-lg md:h-96">
+        <div className="relative h-2/3 overflow-hidden rounded-lg">
           {PhotoGallery.map((photo, index) => (
             <div
               key={index}
@@ -23,9 +23,9 @@ const GalleryCarousel = () => {
               <Image
                 src={photo.photo}
                 alt={`Slide ${index + 1}`}
-                width={300} // Set appropriate width
-                height={300} // Set appropriate height
-                className="block w-full h-full object-cover"
+                width={800}
+                height={800}
+                className="block w-full h-full object-cover opacity-60"
               />
             </div>
           ))}
