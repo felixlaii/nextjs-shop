@@ -7,6 +7,9 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   presets: [require("./tailwind.preset")],
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
 
   theme: {
     extend: {
