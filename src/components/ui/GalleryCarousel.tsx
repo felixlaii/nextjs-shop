@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import "flowbite";
-import { PhotoGallery } from "../../../public/data/photo-gallery";
+import { PhotoGallery } from "../../../public/data/photo-gallery"; // Adjust the path as needed
+
 const GalleryCarousel = () => {
   return (
     <div
@@ -10,58 +11,34 @@ const GalleryCarousel = () => {
       data-carousel="slide"
     >
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          {/* <img src="/docs/images/carousel/carousel-1.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> */}
-        </div>
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          {/* <img src="/docs/images/carousel/carousel-2.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> */}
-        </div>
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          {/* <img src="/docs/images/carousel/carousel-3.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> */}
-        </div>
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          {/* <img src="/docs/images/carousel/carousel-4.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> */}
-        </div>
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          {/* <img src="/docs/images/carousel/carousel-5.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> */}
-        </div>
+        {PhotoGallery.map((photo, index) => (
+          <div
+            key={index}
+            className={`duration-700 ease-in-out ${
+              index === 0 ? "block" : "hidden"
+            }`}
+            data-carousel-item
+          >
+            <Image
+              src={photo.image}
+              alt={`Slide ${index + 1}`}
+              layout="fill"
+              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+            />
+          </div>
+        ))}
       </div>
       <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button
-          type="button"
-          className="w-3 h-3 rounded-full"
-          aria-current="true"
-          aria-label="Slide 1"
-          data-carousel-slide-to="0"
-        ></button>
-        <button
-          type="button"
-          className="w-3 h-3 rounded-full"
-          aria-current="false"
-          aria-label="Slide 2"
-          data-carousel-slide-to="1"
-        ></button>
-        <button
-          type="button"
-          className="w-3 h-3 rounded-full"
-          aria-current="false"
-          aria-label="Slide 3"
-          data-carousel-slide-to="2"
-        ></button>
-        <button
-          type="button"
-          className="w-3 h-3 rounded-full"
-          aria-current="false"
-          aria-label="Slide 4"
-          data-carousel-slide-to="3"
-        ></button>
-        <button
-          type="button"
-          className="w-3 h-3 rounded-full"
-          aria-current="false"
-          aria-label="Slide 5"
-          data-carousel-slide-to="4"
-        ></button>
+        {PhotoGallery.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            className="w-3 h-3 rounded-full"
+            aria-current={index === 0 ? "true" : "false"}
+            aria-label={`Slide ${index + 1}`}
+            data-carousel-slide-to={index}
+          ></button>
+        ))}
       </div>
       <button
         type="button"
@@ -78,9 +55,9 @@ const GalleryCarousel = () => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M5 1 1 5l4 4"
             />
           </svg>
@@ -102,9 +79,9 @@ const GalleryCarousel = () => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="m1 9 4-4-4-4"
             />
           </svg>
