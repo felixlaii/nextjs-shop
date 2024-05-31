@@ -17,6 +17,10 @@ const LogoFooter = () => {
   );
 };
 
+const FooterSocials = () => {
+  return <div></div>;
+};
+
 const Footer: React.FC = () => {
   return <div className="w-screen"></div>;
 };
