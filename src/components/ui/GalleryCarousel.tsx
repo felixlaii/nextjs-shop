@@ -1,5 +1,7 @@
+import React, { useState } from "react";
+import Image from "next/image";
 import "flowbite";
-
+import { PhotoGallery } from "../../../public/data/photo-gallery";
 const GalleryCarousel = () => {
   return (
     <div
