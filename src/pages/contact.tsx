@@ -15,11 +15,10 @@ const Contact: React.FC = () => {
       <div>
         <form
           name="contact"
-          //   encType="multipart/form-data"
           action="/success"
+          className="flex flex-col"
           method="POST"
           data-netlify="true"
-          className="flex flex-col"
         >
           <input type="hidden" name="form-name" value="contact" />
           <div className="flex flex-col mb-4">
