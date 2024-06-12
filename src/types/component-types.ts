@@ -25,3 +25,8 @@ export interface CarouselProps {
   height?: number;
   items: React.ReactNode[];
 }
+
+export interface PhotoGalleryProps {
+  photo: string;
+  src: string;
+}
