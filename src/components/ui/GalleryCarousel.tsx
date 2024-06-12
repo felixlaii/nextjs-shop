@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import PhotoGallery from "@/pages/photogallery";
+import { PhotoGallery } from "../../../public/data/photo-gallery";
 const GalleryCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
@@ -17,15 +17,19 @@ const GalleryCarousel = () => {
     <div className="embla mx-auto mt-12 max-w-lg">
       <div className="embla__viewport h-56 border" ref={emblaRef}>
         <div className="embla__container h-full">
-          <div className="embla__slide flex items-center justify-center">
-            Slide 1
-          </div>
-          <div className="embla__slide flex items-center justify-center">
-            Slide 2
-          </div>
-          <div className="embla__slide flex items-center justify-center">
-            Slide 3
-          </div>
+          {PhotoGallery.map((photo, i) => (
+            <div
+              className="embla__slide flex items-center justify-center"
+              key={i}
+            >
+              <Image
+                src={photo.photo}
+                width={100}
+                height={100}
+                alt={`gallery ${i}`}
+              />
+            </div>
+          ))}
         </div>
       </div>
 
