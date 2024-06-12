@@ -52,7 +52,7 @@ const GalleryCarousel = () => {
     <button
       type="button"
       onClick={isLeftButton ? previousImage : nextImage}
-      className={`${arrowStyle} ${isLeftButton ? "left-2" : "right-2"}`}
+      className={`${arrowStyle} ${isLeftButton ? "left-80" : "right-80"}`}
       style={{ top: "45%" }}
     >
       <span role="img" aria-label={`Arrow ${isLeftButton ? "left" : "right"}`}>
@@ -81,7 +81,7 @@ const GalleryCarousel = () => {
                 height={200}
                 src={img.photo}
                 className={clsx(
-                  "object-cover items-center justify-center w-1/2 h-96 rounded-md opacity-80"
+                  "object-cover items-center justify-center w-[40rem] h-[30rem] rounded-md opacity-80"
                 )}
                 alt="macaron"
               />
