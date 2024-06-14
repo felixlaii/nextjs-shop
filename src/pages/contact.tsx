@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { MdOutlineError } from "react-icons/md";
@@ -10,6 +10,7 @@ const Contact: React.FC = () => {
     floating_phone: "",
     floating_date: "",
     floating_message: "",
+    dropzone_file: null as File | null,
   });
 
   useEffect(() => {
@@ -20,30 +21,43 @@ const Contact: React.FC = () => {
   }, []);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0] || null;
+    setFormData({ ...formData, dropzone_file: file });
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formDataToSend = new FormData();
+    for (const key in formData) {
+      formDataToSend.append(
+        key,
+        formData[key as keyof typeof formData] as string | Blob
+      );
+    }
 
     try {
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: formDataToSend,
       });
 
-      if (response.ok) {
-        alert("Email sent successfully!");
-      } else {
-        alert("Failed to send email.");
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
+
+      const responseData = await response.json();
+      alert(responseData.message);
     } catch (error) {
-      alert("An error occurred: ");
+      console.error("Error submitting form:", error);
+      alert("Error submitting form");
     }
   };
 
@@ -53,7 +67,9 @@ const Contact: React.FC = () => {
         <form
           name="contact"
           action="/success"
+          onSubmit={handleSubmit}
           className="max-w-xl mx-auto"
+          encType="multipart/form-data"
           method="POST"
         >
           <div className="relative z-0 w-full mb-5 group">
@@ -63,6 +79,7 @@ const Contact: React.FC = () => {
               name="floating_name"
               placeholder=" "
               id="floating_name"
+              onChange={handleChange}
               required
             />
             <label
@@ -80,6 +97,7 @@ const Contact: React.FC = () => {
               id="floating_email"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
               placeholder=" "
+              onChange={handleChange}
               required
             />
             <label
@@ -97,6 +115,7 @@ const Contact: React.FC = () => {
               id="floating_phone"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
               placeholder=" "
+              onChange={handleChange}
               required
             />
             <label
@@ -113,6 +132,7 @@ const Contact: React.FC = () => {
               type="text"
               name="floating_date"
               placeholder=" "
+              onChange={handleChange}
               required
             />
             <label
@@ -129,6 +149,7 @@ const Contact: React.FC = () => {
               placeholder="Please include as many details as possible"
               name="floating_message"
               id="floating_message"
+              onChange={handleChange}
               required
             ></textarea>
             <label
@@ -146,7 +167,7 @@ const Contact: React.FC = () => {
               Upload Inspo
             </label>
             <label
-              htmlFor="dropzone-file"
+              htmlFor="dropzone_file"
               className="flex flex-col items-center justify-center w-full h-56 border-2 border-gray-300 border-dashed rounded-md cursor-pointer bg-gray-50"
             >
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -173,7 +194,13 @@ const Contact: React.FC = () => {
                   SVG, PNG, JPG or GIF (MAX. 800x400px)
                 </p>
               </div>
-              <input id="dropzone-file" type="file" className="hidden" />
+              <input
+                id="dropzone_file"
+                type="file"
+                className="hidden"
+                onChange={handleFileChange}
+                name="dropzone_file"
+              />
             </label>
           </div>
           <div className="flex justify-center">
