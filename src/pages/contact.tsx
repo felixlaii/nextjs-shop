@@ -19,6 +19,12 @@ const Contact: React.FC = () => {
     });
   }, []);
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <section className="flex justify-center min-h-screen w-full p-6">
       <div className="w-3/4">
