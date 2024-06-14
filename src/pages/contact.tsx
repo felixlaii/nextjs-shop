@@ -1,9 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { MdOutlineError } from "react-icons/md";
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    floating_name: "",
+    floating_email: "",
+    floating_phone: "",
+    floating_date: "",
+    floating_message: "",
+  });
+
   useEffect(() => {
     flatpickr("#floating_date", {
       enableTime: true,
