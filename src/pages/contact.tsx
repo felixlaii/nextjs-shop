@@ -25,6 +25,28 @@ const Contact: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Email sent successfully!");
+      } else {
+        alert("Failed to send email.");
+      }
+    } catch (error) {
+      alert("An error occurred: ");
+    }
+  };
+
   return (
     <section className="flex justify-center min-h-screen w-full p-6">
       <div className="w-3/4">
