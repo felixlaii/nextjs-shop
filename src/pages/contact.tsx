@@ -16,9 +16,8 @@ const Contact: React.FC = () => {
         <form
           name="contact"
           action="/success"
-          className="flex flex-col"
+          className="flex flex-col max-w-md mx-auto"
           method="POST"
-          data-netlify="true"
         >
           <input type="hidden" name="form-name" value="contact" />
           <div className="flex flex-col mb-4">
