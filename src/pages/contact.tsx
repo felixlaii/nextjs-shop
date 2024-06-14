@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import { TextInput, Textarea, Label, FileInput, Button } from "flowbite-react";
 
 const Contact: React.FC = () => {
   useEffect(() => {
-    flatpickr("#pickup", {
+    flatpickr("#floating_date", {
       enableTime: true,
       dateFormat: "Y-m-d H:i",
     });
@@ -54,7 +55,7 @@ const Contact: React.FC = () => {
           <div className="relative z-0 w-full mb-5 group">
             <input
               type="tel"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
               name="floating_phone"
               id="floating_phone"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -100,24 +101,27 @@ const Contact: React.FC = () => {
               Message
             </label>
           </div>
-          <label
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            htmlFor="user_avatar"
-          >
-            Upload file
-          </label>
-          <input
-            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-            aria-describedby="user_avatar_help"
-            id="user_avatar"
-            type="file"
-          />
-          <div
+          <div className="relative z-0 w-full mb-5 mt-10 group">
+            <label
+              className="block mb-2 text-sm  peer-focus:font-medium text-gray-500 dark:text-white"
+              htmlFor="inspo"
+            >
+              Upload Inspo
+            </label>
+            <input
+              className="block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-pink-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              aria-describedby="inspo"
+              id="inspo"
+              type="file"
+              accept="image/*"
+            />
+          </div>
+          {/* <div
             className="mt-1 text-sm text-gray-500 dark:text-gray-300"
-            id="user_avatar_help"
+            id="inspo"
           >
             pictures for inspiration
-          </div>
+          </div> */}
           <button
             type="submit"
             className="text-white bg-pink-300 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
