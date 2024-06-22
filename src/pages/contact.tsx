@@ -90,7 +90,7 @@ const Contact: React.FC = () => {
             <textarea
               rows={4}
               className="block rounded-sm py-2.5 px-2 w-full text-xs text-gray-900 bg-transparent border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
-              placeholder="Please include as many details as possible"
+              placeholder="Please include as many details as possible (inspo etc.)"
               name="floating_message"
               required
             ></textarea>
