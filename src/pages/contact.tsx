@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
-import { FormData } from "@/types/component-types";
 
 const Contact: React.FC = () => {
   useEffect(() => {
@@ -14,16 +13,17 @@ const Contact: React.FC = () => {
   return (
     <section className="flex justify-center min-h-screen w-full p-6">
       <div className="w-3/4">
-        <form
-          action="https://api.web3forms.com/submit"
-          encType="multipart/form-data"
-          method="POST"
-        >
+        <form action="https://api.web3forms.com/submit" method="POST">
           <input
             type="hidden"
             name="access_key"
             value="755d948f-86c6-4a71-a3a7-beb325a0b965"
           />
+          <input
+            type="hidden"
+            name="redirect"
+            value="http://localhost:3000/success"
+          ></input>
           <div className="relative z-0 w-full mb-5 my-8 group">
             <input
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"

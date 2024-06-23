@@ -1,10 +1,14 @@
-export default function Success() {
+import React from "react";
+import { ProjectLayout } from "@/components/layout/ProjectLayout";
+
+const Success: React.FC = () => {
   return (
-    <div>
-      <p>
-        Your request has been successful! Thank you for connecting, I will reach
-        out as soon as possible!
-      </p>
-    </div>
+    <ProjectLayout>
+      <div className="flex justify-center items-center h-screen">
+        <h1 className="text-2xl font-bold">Thank you for your submission!</h1>
+      </div>
+    </ProjectLayout>
   );
-}
+};
+
+export default Success;
