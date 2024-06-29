@@ -5,6 +5,13 @@ import { FormInquiry } from "@/types/form-types";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const Contact: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState,
+    control,
+    formState: { errors },
+  } = useForm<FormInquiry>();
   useEffect(() => {
     flatpickr("#floating_date", {
       enableTime: true,
