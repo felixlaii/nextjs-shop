@@ -4,20 +4,36 @@ import "flatpickr/dist/flatpickr.min.css";
 import { FormInquiry } from "@/types/form-types";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-const Contact: React.FC = () => {
-  const {
-    register,
-    handleSubmit,
-    formState,
-    control,
-    formState: { errors },
-  } = useForm<FormInquiry>();
+const Contact: React.FC<FormInquiry> = ({
+  floating_name,
+  floating_email,
+  floating_phone,
+  floating_date,
+  floating_message,
+  floating_qty,
+}) => {
   useEffect(() => {
     flatpickr("#floating_date", {
       enableTime: true,
       dateFormat: "Y-m-d H:i",
     });
   }, []);
+
+  const sendMail = async (e: any) => {
+    e.preventDefault();
+
+    const response = await fetch("/api/route", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        subject,
+        message,
+      }),
+    });
+    console.log(await response.json());
+  };
 
   return (
     <section className="flex justify-center w-full p-6">
