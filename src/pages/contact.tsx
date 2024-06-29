@@ -48,10 +48,11 @@ const Contact: React.FC<FormInquiry> = ({
           <input
             type="hidden"
             name="redirect"
-            value="http://localhost:3000/success"
+            // value="http://localhost:3000/success"
           ></input>
           <div className="relative z-0 w-full mb-5 my-8 group">
             <input
+              {...register("floating_name", { required: true })}
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
               type="text"
               name="floating_name"
@@ -68,6 +69,7 @@ const Contact: React.FC<FormInquiry> = ({
 
           <div className="relative z-0 w-full mb-5 my-8 group">
             <input
+              {...register("floating_email", { required: true })}
               type="email"
               name="floating_email"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
@@ -83,6 +85,7 @@ const Contact: React.FC<FormInquiry> = ({
           </div>
           <div className="relative z-0 w-full mb-5 my-8 group">
             <input
+              {...register("floating_phone", { required: true })}
               type="tel"
               name="floating_phone"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
@@ -99,6 +102,7 @@ const Contact: React.FC<FormInquiry> = ({
           <div className="relative z-0 w-full mb-5 my-8 group flex space-x-4">
             <div className="w-1/2">
               <input
+                {...register("floating_date", { required: true })}
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
                 type="text"
                 id="floating_date"
@@ -115,6 +119,7 @@ const Contact: React.FC<FormInquiry> = ({
             </div>
             <div className="w-1/2">
               <input
+                {...register("floating_qty", { required: false })}
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
                 type="number"
                 id="floating_qty"
@@ -133,6 +138,7 @@ const Contact: React.FC<FormInquiry> = ({
 
           <div className="relative z-0 w-full mb-5 my-8 mt-16">
             <textarea
+              {...register("floating_message", { required: true })}
               rows={4}
               className="block rounded-sm py-2.5 px-2 w-full text-xs text-gray-900 bg-transparent border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
               placeholder="Please include as many details as possible (inspo etc.)"
