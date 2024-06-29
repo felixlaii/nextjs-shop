@@ -35,11 +35,15 @@ const Contact: React.FC<FormInquiry> = ({
   return (
     <section className="flex justify-center w-full p-6">
       <div className="w-3/4">
-        <form action="https://api.web3forms.com/submit" method="POST">
+        <form
+          onSubmit={handleSubmit(sendMail)}
+          // action="https://api.web3forms.com/submit"
+          // method="POST"
+        >
           <input
             type="hidden"
             name="access_key"
-            value="755d948f-86c6-4a71-a3a7-beb325a0b965"
+            // value="755d948f-86c6-4a71-a3a7-beb325a0b965"
           />
           <input
             type="hidden"
