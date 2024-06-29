@@ -18,5 +18,16 @@ try {
             pass: process.env.HOTMAIL_PASS
         }
     })
+
+    const mailOption = {
+        from: 'felix.lai@hotmail.com',
+        to: '',
+        subject: "Macaron Inquiry",
+        html: `
+ 
+    <li> title: ${floating_name} has an inquiry!</li>
+    <li> message: ${floating_message}</li> 
+    `
+    }
 }
 
