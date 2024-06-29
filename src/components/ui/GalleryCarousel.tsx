@@ -1,5 +1,4 @@
 import React, { createRef, useState } from "react";
-import ImageGrid from "./ImageGrid";
 import clsx from "clsx";
 import Image from "next/image";
 import { PhotoGallery } from "../../../public/data/photo-gallery";
@@ -12,22 +11,16 @@ const GalleryCarousel = () => {
   }, {});
 
   const scrollToImage = (i: number) => {
-    // Set the index of the image we want to see next
     setCurrentImage(i);
     refs[i].current.scrollIntoView({
-      //     Defines the transition animation.
       behavior: "smooth",
-      //      Defines vertical alignment.
       block: "nearest",
-      //      Defines horizontal alignment.
       inline: "start",
     });
   };
 
   const totalImages = PhotoGallery.length;
 
-  // Below functions will assure that after last image we'll scroll back to the start,
-  // or another way round - first to last in previousImage method.
   const nextImage = () => {
     if (currentImage >= totalImages - 1) {
       scrollToImage(0);
@@ -44,7 +37,24 @@ const GalleryCarousel = () => {
     }
   };
 
-  // Tailwind styles. Most importantly notice position absolute, this will sit relative to the carousel's outer div.
+  const indicatorClicked = (index: number) => {
+    scrollToImage(index);
+  };
+
+  const renderIndicators = () => {
+    return PhotoGallery.map((img, i) => (
+      <button
+        key={i}
+        onClick={() => indicatorClicked(i)}
+        className={clsx(
+          "h-3 w-3 mx-1 rounded-full bg-pink-400 cursor-pointer",
+          currentImage === i && "bg-zinc-300"
+        )}
+        aria-label={`Image ${i + 1}`}
+      />
+    ));
+  };
+
   const arrowStyle =
     "absolute text-white text-2xl z-10 bg-black h-10 w-10 rounded-full opacity-75 flex items-center justify-center";
 
@@ -60,10 +70,11 @@ const GalleryCarousel = () => {
       </span>
     </button>
   );
+
   return (
     <div
       className={clsx(
-        "flex flex-col justify-center items-center w-[calc(10% - 10px)] mx-5 lg:mx-auto pb-8"
+        "flex flex-col justify-center items-center w-full mx-5 lg:mx-auto pb-8"
       )}
     >
       <div className={clsx("relative mt-12")}>
@@ -72,7 +83,7 @@ const GalleryCarousel = () => {
           {PhotoGallery.map((img, i) => (
             <div
               className="flex justify-center w-full flex-shrink-0"
-              key={`${img} - ${i}`}
+              key={`${img}-${i}`}
               ref={refs[i]}
               id={i.toString()}
             >
@@ -89,9 +100,7 @@ const GalleryCarousel = () => {
           ))}
           {sliderControl()}
         </div>
-      </div>
-      <div className="mt-8 max-w-3xl">
-        <ImageGrid />
+        <div className="flex justify-center mt-4">{renderIndicators()}</div>
       </div>
     </div>
   );
