@@ -30,3 +30,12 @@ export interface PhotoGalleryProps {
   photo: string;
   src: string;
 }
+
+export interface FormData {
+  floating_name: string;
+  floating_email: string;
+  floating_phone: string;
+  floating_date: string;
+  floating_message: string;
+  dropzone_file?: File[]; // Define dropzone_file as an array of File
+}
