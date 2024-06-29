@@ -70,22 +70,41 @@ const Contact: React.FC = () => {
               Phone Number
             </label>
           </div>
-          <div className="relative z-0 w-full mb-5 my-8 group">
-            <input
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
-              type="text"
-              id="floating_date"
-              name="floating_date"
-              placeholder=" "
-              required
-            />
-            <label
-              htmlFor="floating_date"
-              className="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:left-auto peer-focus:text-pink-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Date & Time
-            </label>
+          <div className="relative z-0 w-full mb-5 my-8 group flex space-x-4">
+            <div className="w-1/2">
+              <input
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
+                type="text"
+                id="floating_date"
+                name="floating_date"
+                placeholder=" "
+                required
+              />
+              <label
+                htmlFor="floating_date"
+                className="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:left-auto peer-focus:text-pink-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Date & Time Needed
+              </label>
+            </div>
+            <div className="w-1/2">
+              <input
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
+                type="number"
+                id="floating_qty"
+                name="floating_qty"
+                placeholder=" "
+                required
+              />
+              <label
+                htmlFor="floating_qty"
+                className="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:left-auto peer-focus:text-pink-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Quantity
+              </label>
+            </div>
           </div>
+
           <div className="relative z-0 w-full mb-5 my-8 mt-16">
             <textarea
               rows={4}
