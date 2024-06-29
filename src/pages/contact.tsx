@@ -21,17 +21,13 @@ const Contact: React.FC<FormInquiry> = ({
 
   const { register, handleSubmit } = useForm<FormInquiry>();
 
-  const sendMail = async (e: any) => {
-    e.preventDefault();
-
+  const sendMail: SubmitHandler<FormInquiry> = async (data) => {
     const response = await fetch("/api/route", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        ...FormInquiry,
-      }),
+      body: JSON.stringify(data),
     });
     console.log(await response.json());
   };
