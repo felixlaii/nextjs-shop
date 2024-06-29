@@ -19,6 +19,8 @@ const Contact: React.FC<FormInquiry> = ({
     });
   }, []);
 
+  const { register, handleSubmit } = useForm<FormInquiry>();
+
   const sendMail = async (e: any) => {
     e.preventDefault();
 
@@ -28,8 +30,7 @@ const Contact: React.FC<FormInquiry> = ({
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        subject,
-        message,
+        ...FormInquiry,
       }),
     });
     console.log(await response.json());
