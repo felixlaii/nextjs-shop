@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import { FormInquiry } from "@/types/form-types";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 const Contact: React.FC = () => {
   useEffect(() => {
