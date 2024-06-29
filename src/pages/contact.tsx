@@ -13,7 +13,7 @@ const Contact: React.FC = () => {
   return (
     <section className="flex justify-center w-full p-6">
       <div className="w-3/4">
-        <form action="https://api.web3forms.com/submit" method="POST">
+        <form action="http://localhost:3000/success" method="POST">
           <input
             type="hidden"
             name="access_key"
@@ -164,6 +164,11 @@ const Contact: React.FC = () => {
             </label>
           </div> */}
           <div className="flex justify-center">
+            <input
+              type="hidden"
+              name="redirect"
+              value="https://web3forms.com/success"
+            />
             <button
               type="submit"
               className="mt-7 justify-center text-white font-bold tracking-widest bg-pink-200 px-96 hover:bg-pink-400 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center border-double border-4"
