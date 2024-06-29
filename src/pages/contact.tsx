@@ -171,7 +171,7 @@ const Contact: React.FC = () => {
             />
             <button
               type="submit"
-              className="mt-7 justify-center text-white font-bold tracking-widest bg-pink-200 px-96 hover:bg-pink-400 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center border-double border-4"
+              className="mt-7 justify-center text-white font-bold tracking-widest bg-pink-300 px-96 hover:bg-pink-400 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center border-double border-4"
             >
               Submit
             </button>
