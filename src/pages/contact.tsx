@@ -11,7 +11,7 @@ const Contact: React.FC = () => {
   }, []);
 
   return (
-    <section className="flex justify-center min-h-screen w-full p-6">
+    <section className="flex justify-center w-full p-6">
       <div className="w-3/4">
         <form action="https://api.web3forms.com/submit" method="POST">
           <input
