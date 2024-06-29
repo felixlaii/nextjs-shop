@@ -1,48 +1,66 @@
-import { NextResponse } from "next/server";
+import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
+require("dotenv").config();
+interface FormData {
+  floating_name: string;
+  floating_email: string;
+  floating_phone: string;
+  floating_date: string;
+  floating_qty: number;
+  floating_message: string;
+}
 
-export async function POST(req: any) {
-  try {
-    const {
-      floating_name,
-      floating_email,
-      floating_phone,
-      floating_date,
-      floating_qty,
-      floating_message,
-    } = await req.json();
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method === "POST") {
+    try {
+      const formData: FormData = req.body;
 
-    const transporter = nodemailer.createTransport({
-      service: "hotmail",
-      host: "smtpro.zoho.in",
-      port: 587,
-      secure: true,
-      auth: {
-        user: process.env.HOTMAIL_EMAIL,
-        pass: process.env.HOTMAIL_PASS,
-      },
-    });
+      // Log the received form data
+      console.log("Received form data:", formData);
 
-    const mailOption = {
-      from: "felix.lai@hotmail.com",
-      to: "",
-      subject: "Macaron Inquiry",
-      html: `
- 
-    <li> title: ${floating_name} has an inquiry!</li>
-    <li> message: ${floating_message}</li> 
-    `,
-    };
-    await transporter.sendMail(mailOption);
+      // Example: Send email using Nodemailer
+      const transporter = nodemailer.createTransport({
+        host: "smtp.example.com", // Update with your SMTP host
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: process.env.HOTMAIL_EMAIL, // Update with your email credentials
+          pass: process.env.HOTMAIL_PASS, // Update with your email password
+        },
+      });
 
-    return NextResponse.json(
-      { message: "Email Sent Successfully" },
-      { status: 200 }
-    );
-  } catch (error) {
-    return NextResponse.json(
-      { message: "Failed to Send Email" },
-      { status: 500 }
-    );
+      // Email content
+      const mailOptions = {
+        from: "felix.lai@hotmail.com",
+        to: "felix.lai@hotmail.com", // Update with recipient's email
+        subject: "New Form Submission",
+        html: `
+          <p>You have received a new form submission:</p>
+          <ul>
+            <li>Name: ${formData.floating_name}</li>
+            <li>Email: ${formData.floating_email}</li>
+            <li>Phone: ${formData.floating_phone}</li>
+            <li>Date: ${formData.floating_date}</li>
+            <li>Quantity: ${formData.floating_qty}</li>
+            <li>Message: ${formData.floating_message}</li>
+          </ul>
+        `,
+      };
+
+      // Send mail with defined transport object
+      await transporter.sendMail(mailOptions);
+
+      // Respond with success
+      res.status(200).json({ message: "Form data received successfully" });
+    } catch (error) {
+      console.error("Error processing form data:", error);
+      res.status(500).json({ error: "Failed to process form data" });
+    }
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { FormInquiry } from "@/types/form-types";
@@ -13,6 +13,8 @@ const Contact: React.FC<FormInquiry> = ({
   floating_message,
   floating_qty,
 }) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -25,18 +27,26 @@ const Contact: React.FC<FormInquiry> = ({
   const { register, handleSubmit } = useForm<FormInquiry>();
 
   const sendMail: SubmitHandler<FormInquiry> = async (data) => {
-    const response = await fetch("/api/route", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch("/api/route", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    if (response.ok) {
-      router.push("/success");
-    } else {
-      console.error("Failed to submit the form");
+      if (response.ok) {
+        setIsSubmitted(true); // Update state to show success message
+        router.push("/success"); // Redirect to success page if needed
+      } else {
+        const errorData = await response.json();
+        console.error("Failed to submit the form", errorData);
+        setIsError(true); // Update state to show error message
+      }
+    } catch (error) {
+      console.error("Failed to submit the form", error);
+      setIsError(true); // Update state to show error message
     }
   };
 
@@ -116,7 +126,7 @@ const Contact: React.FC<FormInquiry> = ({
             </div>
             <div className="w-1/2">
               <input
-                {...register("floating_qty", { required: false })}
+                {...register("floating_qty", { required: true })}
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-pink-300 peer"
                 type="number"
                 id="floating_qty"
@@ -158,6 +168,16 @@ const Contact: React.FC<FormInquiry> = ({
             </button>
           </div>
         </form>
+        {isSubmitted && (
+          <p className="text-center text-xl font-extralight pt-20">
+            Your submission has been successfully received!
+          </p>
+        )}
+        {isError && (
+          <p className="text-center text-xl font-normal pt-20 text-red-600">
+            An error occurred please contact me
+          </p>
+        )}
       </div>
     </section>
   );

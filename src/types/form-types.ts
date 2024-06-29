@@ -5,8 +5,8 @@ export interface FormState {
 export interface FormInquiry {
   floating_name: string;
   floating_email: string;
-  floating_phone: number;
+  floating_phone: string;
   floating_date: string;
-  floating_qty: number;
+  floating_qty: string;
   floating_message: string;
 }
